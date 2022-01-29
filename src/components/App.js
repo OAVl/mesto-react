@@ -7,7 +7,7 @@ import PopupWithForm from "./PopupWithForm";
 import InputPopupProfile from "./InputPopupProfile";
 import InputPopupElement from "./InputPopupElement";
 import InputPopupAvatar from "./InputPopupAvatar";
-import PopupImage from "./PopupImage";
+import ImagePopup from "./ImagePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -56,10 +56,10 @@ function App() {
 
       <PopupWithForm title='Вы уверены?' name='deleteCard' button='Да' />
 
-      <PopupImage card={selectedCard}
+      <ImagePopup card={selectedCard}
                   onClose={closeAllPopups}>
 
-      </PopupImage>
+      </ImagePopup>
 
 
       </div>
