@@ -27,8 +27,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onClickCard}) {
             <section className="profile">
                 <div className="profile__container">
                     <div className="profile__wrapper-avatar">
-                        <img className="profile__avatar" src={userAvatar} alt="фото пользователя"
-                             style={{ backgroundImage: `url(${userAvatar})` }} />
+                        <img className="profile__avatar" src={userAvatar} alt="фото пользователя" />
                         <span onClick={onEditAvatar} className="profile__editAvatar"></span>
                     </div>
 
