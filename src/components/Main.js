@@ -14,11 +14,15 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onClickCard}) {
             setUserName(data.name);
             setUserDescription(data.about);
             setUserAvatar(data.avatar);
+        }).catch((err) => {
+            alert(`Ошибка: ${err}`)
         })
         api.getInitialCards()
             .then((card) => {
                 setCards(card)
-            })
+            }).catch((err) => {
+            alert(`Ошибка: ${err}`)
+        })
     }, [])
 
 
