@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.element__button-delete_none {
+  display: none;
+}
+
 .element__button-delete:hover {
   opacity: 0.6;
 }
