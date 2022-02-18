@@ -1,14 +1,12 @@
 import React from 'react';
 import Card from "./Card";
 import {CurrentUserContext} from "../contexts/CurrentUserContext";
-import {CardContext} from "../contexts/CardContext";
 
 function Main({onEditProfile, onAddPlace, onEditAvatar, onClickCard, cards, onCardLike, onCardDelete }) {
 
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
-        <CardContext.Provider value={cards}>
         <main className="main">
             <section className="profile">
                 <div className="profile__container">
@@ -30,14 +28,15 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onClickCard, cards, onCa
             </section>
 
             <section className="elements">
-                {cards.map((card) => <Card card={card} key={card._id}
+                {cards.map((card) => ( <Card card={card}
+                                           key={card._id}
                                            onCardClick={onClickCard}
                                            onCardLike={onCardLike}
                                            onCardDelete={onCardDelete}
-                /> )}
+                />)
+                )}
             </section>
         </main>
-        </CardContext.Provider>
     );
 }
 

@@ -39,6 +39,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoadingData }) {
                        autoComplete="off"
                        minLength="2"
                        maxLength="30"
+                       value={name}
                        onChange={handleChangeName}
                        required/>
                 <span id="popup__elementName-error" className="popup__error"></span>
@@ -51,6 +52,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoadingData }) {
                        type="url"
                        autoComplete="off"
                        placeholder="Ссылка на картинку"
+                       value={link}
                        onChange={handleChangeDescription}
                        required/>
                 <span id="popup__link-error" className="popup__error"></span>

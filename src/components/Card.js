@@ -13,14 +13,25 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     const cardLikeButtonClassName = `element__like ${isLiked ? 'element__like_active' : 'element__like'}`;
 
+    function handleLikeClick() {
+        onCardLike(card)
+    }
+
+    function handleCardClick() {
+        onCardClick(card)
+    }
+
+    function handleDeleteClick() {
+        onCardDelete(card)
+    }
 
     return (
-        <article key={card._id} className="element">
-            <img className="element__image" src={card.link} alt="фотография карточки" onClick={_ => onCardClick(card)}/>
-            <button className={cardDeleteButtonClassName} onClick={_ => onCardDelete(card)}></button>
+        <article className="element">
+            <img className="element__image" src={card.link} alt="фотография карточки" onClick={handleCardClick}/>
+            <button className={cardDeleteButtonClassName} onClick={handleDeleteClick}></button>
             <div className="element__wrapper">
                 <h2 className="element__title">{card.name}</h2>
-                <button className={cardLikeButtonClassName} type="button" onClick={_ => onCardLike(card)}></button>
+                <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick}></button>
                 <p className="element__counter-like">{card.likes.length}</p>
             </div>
         </article>

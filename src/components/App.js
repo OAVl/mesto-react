@@ -16,7 +16,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
 
   const [isLoadingData, setIsLoadingData] = useState(false);
@@ -43,12 +43,16 @@ function App() {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
         api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
             setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        }).catch((err) => {
+            alert(`Ошибка: ${err}`)
         });
     }
 
     function handleCardDelete(card) {
         api.deleteCard(card._id).then(() => {
             setCards(cards.filter((c) => c !== card));
+        }).catch((err) => {
+            alert(`Ошибка: ${err}`)
         });
     }
 
@@ -103,7 +107,6 @@ function App() {
 
   return (
         <CurrentUserContext.Provider value={currentUser}>
-      <div className="root">
       <div className="root__wrapper">
         <Header />
         <Main onEditAvatar={() => setIsEditAvatarPopupOpen(true)}
@@ -138,13 +141,9 @@ function App() {
       <PopupWithForm title='Вы уверены?' name='deleteCard' button='Да' />
 
       <ImagePopup card={selectedCard}
-                  isOpen={!!selectedCard.name && !!selectedCard.link}
+                  isOpen={selectedCard.name && !!selectedCard.link}
                   onClose={closeAllPopups}>
-
       </ImagePopup>
-
-
-      </div>
         </CurrentUserContext.Provider>
   );
 }
