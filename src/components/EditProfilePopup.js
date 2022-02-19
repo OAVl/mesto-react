@@ -45,7 +45,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoadingData }) {
                        autoComplete="off"
                        minLength="2"
                        maxLength="40"
-                       value={name}
+                       value={name || ""}
                        onChange={handleChangeName}
                        required/>
                 <span id="popup__name-error" className="popup__error"></span>
@@ -60,7 +60,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoadingData }) {
                        autoComplete="off"
                        minLength="2"
                        maxLength="200"
-                       value={description}
+                       value={description || ""}
                        onChange={handleChangeDescription}
                        required/>
                 <span id="popup__job-error" className="popup__error"></span>

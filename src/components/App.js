@@ -105,13 +105,25 @@ function App() {
         });
     }
 
+    function handleAddPlaceClick() {
+        setIsAddPlacePopupOpen(true);
+    }
+
+    function handleEditAvatarClick() {
+        setIsEditAvatarPopupOpen(true);
+    }
+
+    function handleEditProfileClick() {
+        setIsEditProfilePopupOpen(true);
+    }
+
   return (
         <CurrentUserContext.Provider value={currentUser}>
       <div className="root__wrapper">
         <Header />
-        <Main onEditAvatar={() => setIsEditAvatarPopupOpen(true)}
-              onAddPlace={() => setIsAddPlacePopupOpen(true)}
-              onEditProfile={() => setIsEditProfilePopupOpen(true)}
+        <Main onEditAvatar={handleEditAvatarClick}
+              onAddPlace={handleAddPlaceClick}
+              onEditProfile={handleEditProfileClick}
               onClickCard={handleCardClick}
               cards={cards}
               onCardDelete={handleCardDelete}
